@@ -17,7 +17,7 @@ spec:
       - values-production.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: keycloack
+    namespace: keycloak
   syncPolicy:
     automated:
       selfHeal: true
