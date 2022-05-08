@@ -14,7 +14,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-      - values-production.yaml
+      - keycloak-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloack
