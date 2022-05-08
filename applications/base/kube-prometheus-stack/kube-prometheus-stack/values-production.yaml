@@ -41,7 +41,9 @@ grafana:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       # cert-manager.io/cluster-issuer: letsencrypt-staging
 
-    hosts:
+    tls: 
+    - secretName: prometheus-grafana-cert
+      hosts:
       - raelix-clusters.duckdns.org
 
     path: /grafana      
