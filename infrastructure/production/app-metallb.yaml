@@ -14,7 +14,7 @@ spec:
       valueFiles:
       - metallb/values.yaml
     repoURL: https://metallb.github.io/metallb
-    # targetRevision: 7.6.1
+    targetRevision: 0.12.1
   destination:
     server: https://kubernetes.default.svc
     namespace: metallb-system
