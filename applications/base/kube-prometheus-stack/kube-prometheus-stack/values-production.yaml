@@ -14,6 +14,17 @@ grafana:
     finalizers:
       - kubernetes.io/pvc-protection
 
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      # -- Datasources list. Each Datasource type has specific configurations.
+      datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-kube-prometheus-prometheus:9090
+        isDefault: true
+
+
   grafana.ini:
     server:
       root_url: https://raelix-cluster.duckdns.org:8443/grafana
