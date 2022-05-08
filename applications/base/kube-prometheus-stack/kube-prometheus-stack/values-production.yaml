@@ -46,7 +46,10 @@ grafana:
       hosts:
       - raelix-clusters.duckdns.org
 
-    path: /grafana      
+    hosts:
+      - raelix-clusters.duckdns.org
+
+    path: /grafana
 
   dashboardProviders:
     dashboardproviders.yaml:
