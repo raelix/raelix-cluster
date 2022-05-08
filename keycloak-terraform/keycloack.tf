@@ -18,18 +18,18 @@ variable "user" {
 }
 
 variable "url" {
-  description = "The keycloack URL (e.g. http://raelix-cluster.duckdns.org)"
-  default = "https://raelix-cluster.duckdns.org:8443"
+  description = "The keycloack URL (e.g. http://raelix-clusters.duckdns.org)"
+  default = "https://raelix-clusters.duckdns.org:8443"
 }
 
 variable "grafana_url" {
-  description = "The Grafana URL (e.g. http://raelix-cluster.duckdns.org/grafana)"
-  default = "https://raelix-cluster.duckdns.org:8443/grafana"
+  description = "The Grafana URL (e.g. http://raelix-clusters.duckdns.org/grafana)"
+  default = "https://raelix-clusters.duckdns.org:8443/grafana"
 }
 
 variable "argocd_url" {
-  description = "The ArgoCD URL (e.g. http://raelix-cluster.duckdns.org/argocd)"
-  default = "https://raelix-cluster.duckdns.org:8443/argocd"
+  description = "The ArgoCD URL (e.g. http://raelix-clusters.duckdns.org/argocd)"
+  default = "https://raelix-clusters.duckdns.org:8443/argocd"
 }
 
 variable "realm" {
