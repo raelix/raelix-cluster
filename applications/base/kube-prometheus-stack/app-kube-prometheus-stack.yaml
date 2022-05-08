@@ -9,7 +9,7 @@ metadata:
 spec:
   project: production
   source:
-    path: applications/base/kube-prometheus-stack
+    path: applications/base/kube-prometheus-stack/kube-prometheus-stack
     repoURL: https://github.com/raelix/raelix-cluster.git
     targetRevision: HEAD
     helm:
