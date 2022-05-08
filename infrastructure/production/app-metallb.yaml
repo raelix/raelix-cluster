@@ -12,13 +12,9 @@ spec:
     path: infrastructure/production/metallb
     repoURL: https://github.com/raelix/raelix-cluster.git
     targetRevision: HEAD
-
-    # chart: metallb
-    # helm:
-    #   valueFiles:
-    #   - /metallb-values.yaml
-    # repoURL: https://metallb.github.io/metallb
-    # targetRevision: 0.12.1
+    helm:
+      valueFiles:
+      - values-production.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: metallb-system
