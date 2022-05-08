@@ -2,6 +2,6 @@
     {
       "op": "replace",
       "path": "/spec/source/helm/valueFiles/0",
-      "value": "values-production.yaml"
+      "value": "keycloak-values.yaml"
     }
   ]
