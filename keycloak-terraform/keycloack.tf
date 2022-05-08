@@ -27,6 +27,11 @@ variable "grafana_url" {
   default = "https://raelix-cluster.duckdns.org:8443/grafana"
 }
 
+variable "argocd_url" {
+  description = "The ArgoCD URL (e.g. http://raelix-cluster.duckdns.org/argocd)"
+  default = "https://raelix-cluster.duckdns.org:8443/argocd"
+}
+
 variable "realm" {
   default = "master"
   description = "The keycloack Realm to interact with (default: master)"
@@ -108,6 +113,29 @@ resource "keycloak_openid_client" "grafana" {
 resource "keycloak_openid_client_default_scopes" "grafana" {
   realm_id  = local.realm_id
   client_id = keycloak_openid_client.grafana.id
+  default_scopes = [
+    "profile",
+    "email",
+    keycloak_openid_client_scope.groups.name,
+  ]
+}
+
+resource "keycloak_openid_client" "argocd" {
+  realm_id              = local.realm_id
+  client_id             = "argocd"
+  name                  = "argocd"
+  enabled               = true
+  access_type           = "CONFIDENTIAL"
+  client_secret         = "argocd"
+  standard_flow_enabled = true
+  valid_redirect_uris   = [
+    format("%s/auth/callback", var.argocd_url)
+  ]
+}
+
+resource "keycloak_openid_client_default_scopes" "argocd" {
+  realm_id  = local.realm_id
+  client_id = keycloak_openid_client.argocd.id
   default_scopes = [
     "profile",
     "email",
