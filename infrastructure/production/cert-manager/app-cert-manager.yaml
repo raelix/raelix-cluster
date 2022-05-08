@@ -12,9 +12,9 @@ spec:
     helm:
       values: |
         installCRDs: true
-    chart: cert-manager
-    repoURL: https://charts.jetstack.io
-    targetRevision: 1.8.0
+    path: infrastructure/production/cert-manager/cert-manager
+    repoURL: https://github.com/raelix/raelix-cluster.git
+    targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
