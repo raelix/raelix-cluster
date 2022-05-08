@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1652015699041,
+  "iteration": 1652040949627,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -74,7 +74,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "PBFA97CFB590B2093"
           },
           "exemplar": false,
           "expr": "sort_desc(stats_floor_price{target=~\"$project\"})",
@@ -162,7 +162,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
           "expr": "sort_desc(stats_floor_price{target=~\"$project\"})",
@@ -251,7 +251,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
           "expr": "sort_desc(stats_one_day_sales{target=~\"$project\"})",
@@ -310,6 +310,6 @@
   "timezone": "",
   "title": "Overview",
   "uid": "cnq8M-_7z",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
