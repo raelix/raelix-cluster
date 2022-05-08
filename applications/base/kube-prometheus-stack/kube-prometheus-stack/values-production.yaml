@@ -1,0 +1,91 @@
+grafana:
+  enabled: true
+  adminPassword: prom-operator
+  persistence:
+    type: pvc
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    finalizers:
+      - kubernetes.io/pvc-protection
+
+  grafana.ini:
+    server:
+      root_url: https://raelix-cluster.duckdns.org:8443/grafana
+      serve_from_sub_path: "true"
+    auth.basic:
+      enabled: false
+    auth:
+      disable_login_form: true
+      # signout_redirect_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fraelix-cluster.duckdns.org%3A8443%2Fgrafana%2Flogout
+    auth.generic_oauth:
+      enabled: true
+      name: Keycloak
+      allow_sign_up: true
+      scopes: profile,email,groups
+      auth_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/auth
+      token_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/token
+      api_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/userinfo
+      client_id: grafana
+      client_secret: grafana-client-secret
+      role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
+
+  ingress:
+
+    enabled: true
+
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      # cert-manager.io/cluster-issuer: letsencrypt-staging
+
+    hosts:
+      - raelix-cluster.duckdns.org
+
+    path: /grafana      
+
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'homeassistant'
+        orgId: 1
+        folder: 'Home Assistant Dashboard'
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /tmp/dashboards/homeassistant
+      - name: 'opensea-dashboard'
+        orgId: 1
+        folder: 'Opensea Dashboard'
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /tmp/dashboards/opensea-dashboard
+
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: Prometheus
+        type: prometheus
+        uid: prometheus
+        url: http://prometheus-kube-prometheus-prometheus:9090
+        access: proxy
+        isDefault: true
+
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      labelValue: "1"
+      defaultFolderName: general
+      folder: /tmp/dashboards
+
+  service:
+    portName: http-web
+    type: ClusterIP
