@@ -646,7 +646,43 @@ alertmanager:
 
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
+    # security:
+    #   cookie_secure: false
+    #   cookie_samesite: lax
 grafana:
+
+  persistence:
+    type: pvc
+    enabled: true
+    # storageClassName: default
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    # annotations: {}
+    finalizers:
+      - kubernetes.io/pvc-protection
+
+  grafana.ini:
+    server:
+      root_url: https://raelix-cluster.duckdns.org:8443/grafana
+      serve_from_sub_path: "true"
+    auth.basic:
+      enabled: false
+    auth:
+      disable_login_form: true
+      # signout_redirect_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fraelix-cluster.duckdns.org%3A8443%2Fgrafana%2Flogout
+    auth.generic_oauth:
+      enabled: true
+      name: Keycloak
+      allow_sign_up: true
+      scopes: profile,email,groups
+      auth_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/auth
+      token_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/token
+      api_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/userinfo
+      client_id: grafana
+      client_secret: grafana-client-secret
+      role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
+
   enabled: true
   namespaceOverride: ""
 
@@ -677,7 +713,7 @@ grafana:
   ingress:
     ## If true, Grafana Ingress will be created
     ##
-    enabled: false
+    enabled: true
 
     ## IngressClassName for Grafana Ingress.
     ## Should be provided if Ingress is enable.
@@ -686,7 +722,12 @@ grafana:
 
     ## Annotations for Grafana Ingress
     ##
-    annotations: {}
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      # cert-manager.io/cluster-issuer: letsencrypt-staging
+
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
 
@@ -697,26 +738,53 @@ grafana:
     ## Hostnames.
     ## Must be provided if Ingress is enable.
     ##
-    # hosts:
-    #   - grafana.domain.com
-    hosts: []
+    hosts:
+      - raelix-cluster.duckdns.org
+    # hosts: []
 
     ## Path for grafana ingress
-    path: /
+    path: /grafana
 
     ## TLS configuration for grafana Ingress
     ## Secret must be manually created in the namespace
     ##
-    tls: []
-    # - secretName: grafana-general-tls
-    #   hosts:
-    #   - grafana.example.com
+    # tls: []
+    tls: 
+    - secretName: prometheus-grafana-cert
+      hosts:
+      - raelix-cluster.duckdns.org
+
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'homeassistant'
+        orgId: 1
+        folder: 'Home Assistant Dashboard'
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /tmp/dashboards/homeassistant
+      - name: 'opensea-dashboard'
+        orgId: 1
+        folder: 'Opensea Dashboard'
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /tmp/dashboards/opensea-dashboard
 
   sidecar:
+  
     dashboards:
       enabled: true
       label: grafana_dashboard
       labelValue: "1"
+      defaultFolderName: general
+      folder: /tmp/dashboards
+
+
 
       ## Annotations for Grafana dashboard configmaps
       ##
@@ -728,30 +796,30 @@ grafana:
           enabled: false
       provider:
         allowUiUpdates: false
-    datasources:
-      enabled: true
-      defaultDatasourceEnabled: true
+    # datasources:
+    #   enabled: true
+    #   defaultDatasourceEnabled: true
 
-      uid: prometheus
+    #   uid: prometheus
 
-      ## URL of prometheus datasource
-      ##
-      # url: http://prometheus-stack-prometheus:9090/
+    #   ## URL of prometheus datasource
+    #   ##
+    #   # url: http://prometheus-stack-prometheus:9090/
 
-      # If not defined, will use prometheus.prometheusSpec.scrapeInterval or its default
-      # defaultDatasourceScrapeInterval: 15s
+    #   # If not defined, will use prometheus.prometheusSpec.scrapeInterval or its default
+    #   # defaultDatasourceScrapeInterval: 15s
 
-      ## Annotations for Grafana datasource configmaps
-      ##
-      annotations: {}
+    #   ## Annotations for Grafana datasource configmaps
+    #   ##
+    #   annotations: {}
 
-      ## Create datasource for each Pod of Prometheus StatefulSet;
-      ## this uses headless service `prometheus-operated` which is
-      ## created by Prometheus Operator
-      ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/0fee93e12dc7c2ea1218f19ae25ec6b893460590/pkg/prometheus/statefulset.go#L255-L286
-      createPrometheusReplicasDatasources: false
-      label: grafana_datasource
-      labelValue: "1"
+    #   ## Create datasource for each Pod of Prometheus StatefulSet;
+    #   ## this uses headless service `prometheus-operated` which is
+    #   ## created by Prometheus Operator
+    #   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/0fee93e12dc7c2ea1218f19ae25ec6b893460590/pkg/prometheus/statefulset.go#L255-L286
+    #   createPrometheusReplicasDatasources: false
+    #   label: grafana_datasource
+    #   labelValue: "1"
 
   extraConfigmapMounts: []
   # - name: certs-configmap
@@ -783,6 +851,8 @@ grafana:
   ##
   service:
     portName: http-web
+    type: ClusterIP
+    # nodePort: 30096
 
   serviceMonitor:
     # If true, a ServiceMonitor CRD is created for a prometheus operator
@@ -2279,7 +2349,7 @@ prometheus:
     ## prometheus resource to be created with selectors based on values in the helm deployment,
     ## which will also match the servicemonitors created
     ##
-    serviceMonitorSelectorNilUsesHelmValues: true
+    serviceMonitorSelectorNilUsesHelmValues: false
 
     ## ServiceMonitors to be selected for target discovery.
     ## If {}, select all ServiceMonitors
@@ -2475,7 +2545,18 @@ prometheus:
     ## The scrape configuration example below will find master nodes, provided they have the name .*mst.*, relabel the
     ## port to 2379 and allow etcd scraping provided it is running on all Kubernetes master nodes
     ##
-    additionalScrapeConfigs: []
+    additionalScrapeConfigs: 
+    
+    - job_name: 'homeassistant'
+      scrape_interval: 15s
+      honor_labels: true
+      metrics_path: '/federate'
+
+      params:
+        'match[]':
+          - '{job="home-assistant"}'
+      static_configs:
+      - targets: ['192.168.1.100:9090']
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node
