@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - app-kube-prometheus-stack.yaml
+configMapGenerator:
+- name: homeassistant-dashboard
+  namespace: monitoring
+  options:
+    labels:
+      grafana_dashboard: "1"
+    annotations:
+      k8s-sidecar-target-directory: "/tmp/dashboards/homeassistant"
+  files:
+    - dashboards/homeassistant-dashboard.json
+- name: opensea-dashboard
+  namespace: monitoring
+  options:
+    labels:
+      grafana_dashboard: "1"
+    annotations:
+      k8s-sidecar-target-directory: "/tmp/dashboards/opensea-dashboard"
+  files:
+    - dashboards/opensea-dashboard.json
+
