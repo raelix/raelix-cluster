@@ -9,9 +9,6 @@ metadata:
 spec:
   project: production
   source:
-    helm:
-      values: |
-        installCRDs: true
     path: infrastructure/production/cert-manager/cert-manager
     repoURL: https://github.com/raelix/raelix-cluster.git
     targetRevision: HEAD
