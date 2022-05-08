@@ -775,6 +775,17 @@ grafana:
         options:
           path: /tmp/dashboards/opensea-dashboard
 
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      # -- Datasources list. Each Datasource type has specific configurations.
+      datasources:
+      - name: Thanos
+        type: prometheus
+        uid: prometheus
+        url: http://prometheus-kube-prometheus-prometheus:9090
+        access: proxy
+        isDefault: true
   sidecar:
   
     dashboards:
@@ -796,6 +807,8 @@ grafana:
           enabled: false
       provider:
         allowUiUpdates: false
+
+
     # datasources:
     #   enabled: true
     #   defaultDatasourceEnabled: true
