@@ -16,7 +16,7 @@ ingress:
   ingressClassName: ""
   pathType: ImplementationSpecific
   apiVersion: ""
-  hostname: raelix-cluster.duckdns.org
+  hostname: raelix-clusters.duckdns.org
   path: "/auth"
   tls: true 
 

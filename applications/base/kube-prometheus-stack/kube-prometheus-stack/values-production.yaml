@@ -12,21 +12,21 @@ grafana:
 
   grafana.ini:
     server:
-      root_url: https://raelix-cluster.duckdns.org:8443/grafana
+      root_url: https://raelix-clusters.duckdns.org:8443/grafana
       serve_from_sub_path: "true"
     auth.basic:
       enabled: false
     auth:
       disable_login_form: true
-      # signout_redirect_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fraelix-cluster.duckdns.org%3A8443%2Fgrafana%2Flogout
+      # signout_redirect_url: https://raelix-clusters.duckdns.org:8443/auth/realms/master/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fraelix-clusters.duckdns.org%3A8443%2Fgrafana%2Flogout
     auth.generic_oauth:
       enabled: true
       name: Keycloak
       allow_sign_up: true
       scopes: profile,email,groups
-      auth_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/auth
-      token_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/token
-      api_url: https://raelix-cluster.duckdns.org:8443/auth/realms/master/protocol/openid-connect/userinfo
+      auth_url: https://raelix-clusters.duckdns.org:8443/auth/realms/master/protocol/openid-connect/auth
+      token_url: https://raelix-clusters.duckdns.org:8443/auth/realms/master/protocol/openid-connect/token
+      api_url: https://raelix-clusters.duckdns.org:8443/auth/realms/master/protocol/openid-connect/userinfo
       client_id: grafana
       client_secret: grafana-client-secret
       role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
@@ -42,7 +42,7 @@ grafana:
       # cert-manager.io/cluster-issuer: letsencrypt-staging
 
     hosts:
-      - raelix-cluster.duckdns.org
+      - raelix-clusters.duckdns.org
 
     path: /grafana      
 
