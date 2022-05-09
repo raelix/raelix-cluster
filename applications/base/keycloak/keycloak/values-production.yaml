@@ -61,8 +61,8 @@ keycloakConfigCli:
           {
             "clientId": "grafana",
             "enabled": true,
-            "clientAuthenticatorType": "grafana-client-secret",
-            "secret": "grafana-the-client-secret",
+            "clientAuthenticatorType": "client-secret",
+            "secret": "grafana-client-secret",
             "redirectUris": [
               "https://raelix-clusters.duckdns.org:8443/grafana/login/generic_oauth"
             ],
@@ -83,8 +83,8 @@ keycloakConfigCli:
           {
             "clientId": "argocd",
             "enabled": true,
-            "clientAuthenticatorType": "argo-client-secret",
-            "secret": "argo-the-client-secret",
+            "clientAuthenticatorType": "client-secret",
+            "secret": "argo-client-secret",
             "redirectUris": [
               "https://raelix-clusters.duckdns.org:8443/argocd/auth/callback"
             ],
