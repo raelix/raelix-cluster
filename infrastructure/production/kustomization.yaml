@@ -5,3 +5,4 @@ resources:
   # - app-metallb.yaml
   - app-cert-manager.yaml
   - app-argocd.yaml
+  - argo-cd/argocd-rbac-cm.yaml
