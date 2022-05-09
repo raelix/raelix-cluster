@@ -43,6 +43,25 @@ keycloakConfigCli:
     realm.json: |
       {
         "realm": "master",
+        "clientScopes": [
+          {
+            "name": "groups",
+            "protocol": "openid-connect",
+            "protocolMappers": [
+              {
+                "name": "groups",
+                "protocol": "openid-connect",
+                "protocolMapper": "oidc-group-membership-mapper",
+                "config": {
+                  "id.token.claim": "true",
+                  "access.token.claim": "true",
+                  "claim.name": "groups",
+                  "userinfo.token.claim": "true"
+                }
+              }
+            ]
+          }
+        ],
         "groups": [
           {
             "name": "grafana-dev"
