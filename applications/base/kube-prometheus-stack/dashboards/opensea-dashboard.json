@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1652015699041,
+  "iteration": 1652125256891,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -141,8 +141,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 25,
-        "w": 12,
+        "h": 20,
+        "w": 6,
         "x": 0,
         "y": 4
       },
@@ -225,14 +225,140 @@
               }
             ]
           },
+          "unit": "ETH"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ETH"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "Sales"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 20,
+        "w": 8,
+        "x": 8,
+        "y": 4
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sort_desc(stats_floor_price{target=~\"$project\"})",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{target}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sort_desc(stats_one_day_sales{target=~\"$project\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{target}}",
+          "refId": "B"
+        }
+      ],
+      "title": "Price/Sales",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "Items"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 24,
-        "w": 12,
-        "x": 12,
+        "h": 20,
+        "w": 6,
+        "x": 18,
         "y": 4
       },
       "id": 4,
@@ -277,10 +403,10 @@
         "current": {
           "selected": true,
           "text": [
-            "All"
+            "otherdeed"
           ],
           "value": [
-            "$__all"
+            "otherdeed"
           ]
         },
         "definition": "stats_floor_price{environment=\"opensea\"}",
@@ -303,13 +429,13 @@
     ]
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Overview",
   "uid": "cnq8M-_7z",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
