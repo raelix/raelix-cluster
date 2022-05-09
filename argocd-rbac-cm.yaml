@@ -1,9 +1,0 @@
-apiVersion: v1
-data:
-  policy.csv: |
-    g, ArgoCDAdmins, role:admin
-    g, ArgoCDViewers, role:readonly
-kind: ConfigMap
-metadata:
-  name: argocd-rbac-cm
-  namespace: argocd
