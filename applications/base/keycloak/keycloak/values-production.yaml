@@ -36,3 +36,145 @@ ingress:
 
 auth:
   adminPassword: admin
+
+keycloakConfigCli:
+  enabled: true
+  configuration:
+    realm.json: |
+      {
+        "realm": "master",
+        "groups": [
+          {
+            "name": "grafana-dev"
+          },
+          {
+            "name": "grafana-admin"
+          },
+          {
+            "name": "ArgoCDAdmins"
+          },
+          {
+            "name": "ArgoCDViewers"
+          }
+        ],
+        "clients": [
+          {
+            "clientId": "grafana",
+            "enabled": true,
+            "clientAuthenticatorType": "grafana-client-secret",
+            "secret": "grafana-the-client-secret",
+            "redirectUris": [
+              "https://raelix-clusters.duckdns.org:8443/grafana/login/generic_oauth"
+            ],
+            "protocolMappers": [
+              {
+                "name": "groups",
+                "protocol": "openid-connect",
+                "protocolMapper": "oidc-group-membership-mapper",
+                "config": {
+                  "id.token.claim": "true",
+                  "access.token.claim": "true",
+                  "claim.name": "groups",
+                  "userinfo.token.claim": "true"
+                }
+              }
+            ]
+          },
+          {
+            "clientId": "argocd",
+            "enabled": true,
+            "clientAuthenticatorType": "argo-client-secret",
+            "secret": "argo-the-client-secret",
+            "redirectUris": [
+              "https://raelix-clusters.duckdns.org:8443/argocd/auth/callback"
+            ],
+            "protocolMappers": [
+              {
+                "name": "groups",
+                "protocol": "openid-connect",
+                "protocolMapper": "oidc-group-membership-mapper",
+                "config": {
+                  "id.token.claim": "true",
+                  "access.token.claim": "true",
+                  "claim.name": "groups",
+                  "userinfo.token.claim": "true"
+                }
+              }
+            ]
+          }
+        ],
+        "users": [
+          {
+            "username": "user",
+            "email": "user@domain.com",
+            "enabled": true,
+            "firstName": "userFirstName",
+            "lastName": "userLastName",
+            "groups": [
+              "grafana-admin",
+              "ArgoCDAdmins"
+            ],
+            "realmRoles": [
+              "admin",
+              "default-roles-master"
+            ],
+            "attributes": [
+              {
+                "locale": [
+                  "it"
+                ]
+              }
+            ]
+          },
+          {
+            "username": "admin",
+            "email": "admin@domain.com",
+            "enabled": true,
+            "firstName": "adminFirstName",
+            "lastName": "adminLastName",
+            "groups": [
+              "grafana-admin",
+              "ArgoCDAdmins"
+            ],
+            "credentials": [
+              {
+                "type": "password",
+                "userLabel": "initial",
+                "value": "admin"
+              }
+            ],
+            "attributes": [
+              {
+                "locale": [
+                  "it"
+                ]
+              }
+            ]
+          },
+          {
+            "username": "viewer",
+            "email": "viewer@domain.com",
+            "enabled": true,
+            "firstName": "viewerFirstName",
+            "lastName": "viewerLastName",
+            "groups": [
+              "grafana-dev",
+              "ArgoCDViewers"
+            ],
+            "credentials": [
+              {
+                "type": "password",
+                "userLabel": "initial",
+                "value": "viewer"
+              }
+            ],
+            "attributes": [
+              {
+                "locale": [
+                  "it"
+                ]
+              }
+            ]
+          }
+        ]
+      }
