@@ -2,14 +2,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: argo-cd
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: production
   source:
-    path: infrastructure/production/argocd
+    path: infrastructure/production/argo-cd
     repoURL: https://github.com/raelix/raelix-cluster.git
     targetRevision: HEAD
     helm:
