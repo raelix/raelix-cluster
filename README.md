@@ -23,3 +23,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 (You should delete the initial secret afterwards as suggested by the Getting Started Guide: https://github.com/argoproj/argo-cd/blob/master/docs/getting_started.md#4-login-using-the-cli)
 ```
+
+## TODO
+[ ] - Fix group in OID keycloak
+[ ] - Add sealed secrets
