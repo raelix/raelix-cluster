@@ -15,9 +15,10 @@ spec:
     helm:
       values: |
           controller: 
+            kind: DaemonSet
             hostNetwork: true
             service:
-              type: ClusterIP
+              type: ""
           defaultBackend:
             enabled: true
   destination:
