@@ -1,5 +1,3 @@
-fullnameOverride: "argo-cd"
-
 server:
   extraArgs:
    - --insecure
