@@ -1,5 +1,13 @@
 proxyAddressForwarding: true
 
+postgresql:
+  enabled: true
+  auth:
+    username: bn_keycloak
+    password: "bn_keycloak_password"
+    database: bitnami_keycloak
+
+
 extraEnvVars:
 - name: PROXY_ADDRESS_FORWARDING
   value: "true"
