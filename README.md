@@ -3,7 +3,7 @@
 ```
 helm repo add argo https://argoproj.github.io/argo-helm
 helm upgrade argo-cd infrastructure/production/argo-cd --version 4.5.11 --namespace argocd --create-namespace --install 
-
+helm upgrade argo-cd infrastructure/production/argo-cd --version 4.5.11 --namespace argocd --create-namespace --install  --reuse-values -f infrastructure/production/argo-cd/argocd-values-after.yaml
 
 NOTES:
 In order to access the server UI you have the following options:

@@ -1,12 +1,18 @@
+server:
+  extraArgs:
+   - --insecure
+   - --rootpath
+   - /argocd
+
   ingress:
-    enabled: false 
+    enabled: true 
     labels: {}
 
     annotations:
       kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
-      # cert-manager.io/cluster-issuer: letsencrypt-prod
-      cert-manager.io/cluster-issuer: letsencrypt-staging
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      # cert-manager.io/cluster-issuer: letsencrypt-staging
 
 
     ## Argo Ingress.
@@ -14,18 +20,17 @@
     ## Secrets must be manually created in the namespace
     ##
     hosts:
-      - raelix-cluster.duckdns.org
+      - raelix-clusters.duckdns.org
 
     paths:
       - /argocd
     tls:
       - secretName: argocd-server-tls
         hosts:
-          - raelix-cluster.duckdns.org
+          - raelix-clusters.duckdns.org
 
-server:
   config:
-    url: "https://raelix-cluster.duckdns.org:8443/argocd"
+    url: "https://raelix-clusters.duckdns.org:8443/argocd"
     # Argo CD instance label key
     application.instanceLabelKey: argocd.argoproj.io/instance
 
@@ -44,7 +49,7 @@ server:
 
     oidc.config: |
       name: Keycloak
-      issuer: https://raelix-cluster.duckdns.org:8443/auth/realms/master
+      issuer: https://raelix-clusters.duckdns.org:8443/auth/realms/master
       clientID: argocd
       clientSecret: argocd
       requestedIDTokenClaims:
