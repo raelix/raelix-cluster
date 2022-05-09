@@ -4,6 +4,11 @@ server:
    - --rootpath
    - /argocd
 
+  rbacConfig:
+    policy.csv: |
+      g, ArgoCDAdmins, role:admin
+      g, ArgoCDViewers, role:readonly
+
   ingress:
     enabled: true 
     labels: {}
