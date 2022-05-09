@@ -84,7 +84,7 @@ keycloakConfigCli:
             "clientId": "argocd",
             "enabled": true,
             "clientAuthenticatorType": "client-secret",
-            "secret": "argo-client-secret",
+            "secret": "argocd-client-secret",
             "redirectUris": [
               "https://raelix-clusters.duckdns.org:8443/argocd/auth/callback"
             ],

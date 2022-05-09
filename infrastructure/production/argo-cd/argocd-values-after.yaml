@@ -50,8 +50,8 @@ server:
     oidc.config: |
       name: Keycloak
       issuer: https://raelix-clusters.duckdns.org:8443/auth/realms/master
-      clientID: argo-client-secret
-      clientSecret: argo-the-client-secret
+      clientID: argocd
+      clientSecret: argocd-client-secret
       requestedIDTokenClaims:
         groups:
           essential: true
