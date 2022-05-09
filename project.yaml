@@ -18,3 +18,10 @@ spec:
   namespaceResourceWhitelist:
   - group: '*'
     kind: '*'
+  # roles:
+  # - name: viewer
+  #   description: Read-only privileges to my-project
+  #   policies:
+  #   - p, proj:my-project:read-only, applications, get, my-project/*, allow
+  #   groups:
+  #   - ArgoCDViewer

@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  policy.csv: |
+    g, ArgoCDAdmins, role:admin
+    g, ArgoCDViewers, role:readonly
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: argo-cd
+    meta.helm.sh/release-namespace: argocd
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/instance: argo-cd
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+    helm.sh/chart: argo-cd-4.5.11
+  name: argocd-rbac-cm
+  namespace: argocd

@@ -48,10 +48,10 @@ provider "keycloak" {
 
 locals {
   realm_id = var.realm
-  groups   = ["grafana-dev", "grafana-admin"]
+  groups   = ["grafana-dev", "grafana-admin", "ArgoCDAdmins", "ArgoCDViewers"]
   user_groups = {
-    user-dev   = ["grafana-dev"]
-    user-admin = ["grafana-admin"]
+    viewer   = ["grafana-dev", "ArgoCDViewers"]
+    admin = ["grafana-admin", "ArgoCDAdmins"]
   }
 }
 
