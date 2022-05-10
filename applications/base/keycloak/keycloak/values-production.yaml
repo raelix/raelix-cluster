@@ -195,5 +195,19 @@ keycloakConfigCli:
               }
             ]
           }
-        ]
+        ],
+        "defaultDefaultClientScopes": [
+          "email",
+          "profile",
+          "role_list",
+          "roles",
+          "web-origins",
+          "groups"
+        ],
+        "defaultOptionalClientScopes": [
+          "address",
+          "microprofile-jwt",
+          "offline_access",
+          "phone"
+        ],
       }
