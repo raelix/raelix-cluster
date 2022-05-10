@@ -29,7 +29,6 @@ A key can be generated early in two ways
 `kubectl label secrets <keyname> sealedsecrets.bitnami.com/sealed-secrets-key=compromised`.
 2. (since v0.9.3) pass current timestamp to the controller into a flag called `--key-cutoff-time` or an env var called `SEALED_SECRETS_KEY_CUTOFF_TIME`. Expected format is RFC1123, you can generate it with the `date -R` unix command.
 
-
 ## TODO
 [ ] - Fix group in OID keycloak
 [ ] - Add sealed secrets
