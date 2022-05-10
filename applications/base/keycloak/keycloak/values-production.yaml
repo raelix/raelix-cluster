@@ -43,20 +43,6 @@ keycloakConfigCli:
     realm.json: |
       {
         "realm": "master",
-        "defaultDefaultClientScopes": [
-          "email",
-          "profile",
-          "role_list",
-          "roles",
-          "web-origins",
-          "groups"
-        ],
-        "defaultOptionalClientScopes": [
-          "address",
-          "microprofile-jwt",
-          "offline_access",
-          "phone"
-        ],
         "clientScopes": [
           {
             "name": "groups",
@@ -99,6 +85,19 @@ keycloakConfigCli:
             "redirectUris": [
               "https://raelix-clusters.duckdns.org:8443/grafana/login/generic_oauth"
             ],
+            "defaultClientScopes": [
+              "email",
+              "groups",
+              "profile",
+              "roles",
+              "web-origins"
+            ],
+            "optionalClientScopes": [
+              "address",
+              "microprofile-jwt",
+              "offline_access",
+              "phone"
+            ],
             "protocolMappers": [
               {
                 "name": "groups",
@@ -120,6 +119,19 @@ keycloakConfigCli:
             "secret": "argocd-client-secret",
             "redirectUris": [
               "https://raelix-clusters.duckdns.org:8443/argocd/auth/callback"
+            ],
+            "defaultClientScopes": [
+              "email",
+              "groups",
+              "profile",
+              "roles",
+              "web-origins"
+            ],
+            "optionalClientScopes": [
+              "address",
+              "microprofile-jwt",
+              "offline_access",
+              "phone"
             ],
             "protocolMappers": [
               {
