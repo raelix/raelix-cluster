@@ -209,5 +209,5 @@ keycloakConfigCli:
           "microprofile-jwt",
           "offline_access",
           "phone"
-        ],
+        ]
       }
