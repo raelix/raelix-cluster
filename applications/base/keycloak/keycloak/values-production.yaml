@@ -33,10 +33,10 @@ ingress:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     # cert-manager.io/cluster-issuer: letsencrypt-staging
     cert-manager.io/cluster-issuer: letsencrypt-prod
-auth:
-  managementPassword: management
+
 auth:
   adminPassword: admin
+  managementPassword: management
 
       # "defaultClientScopes": [
       #   "email",
