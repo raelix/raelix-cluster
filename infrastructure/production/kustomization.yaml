@@ -4,5 +4,6 @@ resources:
   - app-nginx.yaml
   # - app-metallb.yaml
   - app-cert-manager.yaml
+  - app-sealed-secrets.yaml
   - app-argocd.yaml
   - duckdns
