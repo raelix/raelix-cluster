@@ -32,3 +32,5 @@ A key can be generated early in two ways
 ## TODO
 [ X ] - Fix group in OID keycloak
 [ X ] - Add sealed secrets
+[ ] - Create a common launcher
+[ ] - use one entrypoint even for home assistant?
