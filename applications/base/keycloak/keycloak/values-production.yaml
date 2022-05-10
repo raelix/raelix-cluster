@@ -43,6 +43,20 @@ keycloakConfigCli:
     realm.json: |
       {
         "realm": "master",
+        "defaultDefaultClientScopes": [
+          "email",
+          "profile",
+          "role_list",
+          "roles",
+          "web-origins",
+          "groups"
+        ],
+        "defaultOptionalClientScopes": [
+          "address",
+          "microprofile-jwt",
+          "offline_access",
+          "phone"
+        ],
         "clientScopes": [
           {
             "name": "groups",
