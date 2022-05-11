@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/raelix/raelix-cluster.git
     targetRevision: HEAD
-    path: production
+    path: bootstrap/production
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
