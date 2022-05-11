@@ -4,3 +4,4 @@ resources:
   - keycloak
   - kube-prometheus-stack
   - prometheus-json-exporter
+  - ../../base/home-assistant

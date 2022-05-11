@@ -7,3 +7,4 @@ resources:
   - app-sealed-secrets.yaml
   - app-argocd.yaml
   - duckdns
+  - cloudflare
