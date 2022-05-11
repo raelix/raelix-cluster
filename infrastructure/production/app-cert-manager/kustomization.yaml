@@ -4,4 +4,4 @@ resources:
 - app-cert-manager.yaml
 - staging-issuer.yaml
 - prod-issuer.yaml
-# - home-raelix-tk-cert-prod.yaml
+- home-raelix-tk-cert-prod.yaml
