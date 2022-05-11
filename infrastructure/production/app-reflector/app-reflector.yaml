@@ -1,19 +1,23 @@
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: reflector
-  namespace: kube-system
+  namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: production
   source:
-    chart: reflector
-    repoURL: https://emberstack.github.io/helm-charts
-    targetRevision: 6.1.47 
+    path: components/reflector
+    repoURL: https://github.com/raelix/raelix-cluster.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system
+    namespace: reflector
   syncPolicy:
     automated:
       selfHeal: true
