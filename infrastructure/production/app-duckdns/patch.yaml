@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: duckdns
+spec:
+  template:
+    spec:
+      containers:
+        - name: duckdns 
+          env:
+          - name: TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: secret-duckdns
+                key: token
+          - name: SUBDOMAINS
+            valueFrom:
+              configMapKeyRef:
+                name: subdomains
+                key: SUBDOMAINS
