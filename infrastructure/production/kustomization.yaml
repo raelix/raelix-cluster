@@ -7,4 +7,5 @@ resources:
   - app-sealed-secrets
   - app-argo-cd
   - app-duckdns
+  - app-reflector
   # - cloudflare
