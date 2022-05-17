@@ -35,6 +35,7 @@
   metadata:
     annotations:
       kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt-prod
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
       # nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -55,3 +56,7 @@
                 name: https
           path: /
           pathType: ImplementationSpecific
+    tls:
+    - secretName: raelix.duckdns.org-tls
+      hosts:
+      - raelix.duckdns.org
