@@ -25,17 +25,17 @@ server:
     ## Secrets must be manually created in the namespace
     ##
     hosts:
-      - raelix-clusters.duckdns.org
+      - argocd.raelix.tk
 
     paths:
-      - /argocd
+      - /
     tls:
       - secretName: argocd-server-tls
         hosts:
-          - raelix-clusters.duckdns.org
+          - argocd.raelix.tk
 
   config:
-    url: "https://raelix-clusters.duckdns.org:8443/argocd"
+    url: "https://argocd.raelix.tk:8443"
     # Argo CD instance label key
     application.instanceLabelKey: argocd.argoproj.io/instance
 
@@ -54,7 +54,7 @@ server:
 
     oidc.config: |
       name: Keycloak
-      issuer: https://raelix-clusters.duckdns.org:8443/auth/realms/master
+      issuer: https://auth.raelix.tk:8443/auth/realms/master
       clientID: argocd
       clientSecret: argocd-client-secret
       requestedIDTokenClaims:
