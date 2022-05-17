@@ -1,0 +1,47 @@
+config:
+  clientID: "oauth2-proxy"
+  clientSecret: "oauth2-client-secret"
+  # cookieSecret: "NHY5UkJ2Ylplb1dMaThJMWM5TXB2NlA1SVY3dHhlTHM="
+  configFile: |-
+    provider = "oidc"
+    provider_display_name = "Raelix HomeLab Login"
+    oidc_issuer_url = "https://auth.raelix.tk:8443/auth/realms/master"
+    email_domains = [ "*" ]
+    scope = "openid profile email"
+    whitelist_domains = [".raelix.tk:8443"]
+    pass_authorization_header = true
+    pass_access_token = true
+    pass_user_headers = true
+    set_authorization_header = true
+    set_xauthrequest = true
+    cookie_refresh = "1m"
+    cookie_expire = "30m"
+
+# extraArgs:
+#   provider: keycloak
+#   # set-xauthrequest: true
+#   provider-display-name: Raelix HomeLab Login
+#   client-id: oauth2-proxy
+#   client-secret: oauth2-client-secret
+#   redirect-url: "https://oauth2-proxy.raelix.tk:8443/oauth2/callback"
+#   # allowed-role: ArgoCDAdmins
+#   # allowed-role: ArgoCDAdmins
+#   oidc-issuer-url: "https://auth.raelix.tk:8443/auth/realms/master"
+  # login-url: "https://raelix-clusters.duckdns.org:8443/auth/realms/master/protocol/openid-connect/auth" 
+  # redeem-url: "https://raelix-clusters.duckdns.org:8443/auth/realms/master/protocol/openid-connect/token" 
+  # validate-url: "https://raelix-clusters.duckdns.org:8443/auth/realms/master/protocol/openid-connect/userinfo" 
+  # keycloak-group: ArgoCDAdmins
+
+ingress:
+  enabled: true
+  path: /
+  pathType: ImplementationSpecific
+  hosts:
+    - oauth2-proxy.raelix.tk
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+  tls:
+    - secretName: oauth2-proxy-raelix-tk
+      hosts:
+        - oauth2-proxy.raelix.tk
