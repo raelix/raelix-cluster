@@ -8,9 +8,9 @@ postgresql:
     database: bitnami_keycloak
 
 
-extraEnvVars:
-- name: PROXY_ADDRESS_FORWARDING
-  value: "true"
+# extraEnvVars:
+# - name: PROXY_ADDRESS_FORWARDING
+#   value: "true"
 
 service:
   type: ClusterIP
@@ -24,8 +24,10 @@ ingress:
   ingressClassName: ""
   pathType: ImplementationSpecific
   apiVersion: ""
-  hostname: raelix-clusters.duckdns.org
-  path: "/auth"
+  # hostname: raelix-clusters.duckdns.org
+  # path: "/auth"
+  hostname: auth.raelix.tk
+  path: "/"
   tls: true 
 
   annotations:
