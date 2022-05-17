@@ -54,7 +54,7 @@ server:
 
     oidc.config: |
       name: Keycloak
-      issuer: https://auth.raelix.tk:8443/realms/master
+      issuer: https://auth.raelix.tk:8443/auth/realms/master
       clientID: argocd
       clientSecret: argocd-client-secret
       requestedIDTokenClaims:
