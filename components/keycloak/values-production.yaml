@@ -138,7 +138,7 @@ keycloakConfigCli:
             "clientAuthenticatorType": "client-secret",
             "secret": "grafana-client-secret",
             "redirectUris": [
-              "https://raelix-clusters.duckdns.org:8443/grafana/login/generic_oauth"
+              "https://grafana.raelix.tk:8443/login/generic_oauth"
             ],
             "defaultClientScopes": [
               "email",
