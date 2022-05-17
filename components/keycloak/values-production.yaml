@@ -101,7 +101,7 @@ keycloakConfigCli:
             "clientAuthenticatorType": "client-secret",
             "secret": "oauth2-client-secret",
             "redirectUris": [
-              "https://raelix-clusters.duckdns.org:8443/oauth2/callback"
+              "https://oauth2-proxy.raelix.tk:8443/oauth2/callback"
             ],
             "defaultClientScopes": [
               "email",
