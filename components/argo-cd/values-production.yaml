@@ -2,7 +2,7 @@ server:
   extraArgs:
    - --insecure
    - --rootpath
-   - /argocd
+   - /
 
   rbacConfig:
     policy.csv: |
