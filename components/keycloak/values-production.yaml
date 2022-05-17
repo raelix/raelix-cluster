@@ -173,7 +173,7 @@ keycloakConfigCli:
             "clientAuthenticatorType": "client-secret",
             "secret": "argocd-client-secret",
             "redirectUris": [
-              "https://raelix-clusters.duckdns.org:8443/argocd/auth/callback"
+              "https://argocd.raelix.tk:8443/auth/callback"
             ],
             "defaultClientScopes": [
               "email",
