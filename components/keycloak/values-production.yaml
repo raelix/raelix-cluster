@@ -79,6 +79,9 @@ keycloakConfigCli:
         ],
         "groups": [
           {
+            "name": "oauth2-proxy"
+          },
+          {
             "name": "grafana-dev"
           },
           {
@@ -92,6 +95,41 @@ keycloakConfigCli:
           }
         ],
         "clients": [
+          {
+            "clientId": "oauth2-proxy",
+            "enabled": true,
+            "clientAuthenticatorType": "client-secret",
+            "secret": "oauth2-client-secret",
+            "redirectUris": [
+              "https://raelix-clusters.duckdns.org:8443/oauth2/callback"
+            ],
+            "defaultClientScopes": [
+              "email",
+              "groups",
+              "profile",
+              "roles",
+              "web-origins"
+            ],
+            "optionalClientScopes": [
+              "address",
+              "microprofile-jwt",
+              "offline_access",
+              "phone"
+            ],
+            "protocolMappers": [
+              {
+                "name": "groups",
+                "protocol": "openid-connect",
+                "protocolMapper": "oidc-group-membership-mapper",
+                "config": {
+                  "id.token.claim": "true",
+                  "access.token.claim": "true",
+                  "claim.name": "groups",
+                  "userinfo.token.claim": "true"
+                }
+              }
+            ]
+          },
           {
             "clientId": "grafana",
             "enabled": true,
@@ -194,7 +232,8 @@ keycloakConfigCli:
             "lastName": "adminLastName",
             "groups": [
               "grafana-admin",
-              "ArgoCDAdmins"
+              "ArgoCDAdmins",
+              "oauth2-proxy"
             ],
             "credentials": [
               {
