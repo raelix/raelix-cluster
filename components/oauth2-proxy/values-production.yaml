@@ -1,7 +1,7 @@
 config:
   clientID: "oauth2-proxy"
   clientSecret: "oauth2-client-secret"
-  # cookieSecret: "NHY5UkJ2Ylplb1dMaThJMWM5TXB2NlA1SVY3dHhlTHM="
+  cookieSecret: "NHY5UkJ2Ylplb1dMaThJMWM5TXB2NlA1SVY3dHhlTHM="
   configFile: |-
     provider = "oidc"
     provider_display_name = "Raelix HomeLab Login"
@@ -16,6 +16,7 @@ config:
     set_xauthrequest = true
     cookie_refresh = "1m"
     cookie_expire = "30m"
+    cookie_domains = [".raelix.tk"]
 
 # extraArgs:
 #   provider: keycloak
