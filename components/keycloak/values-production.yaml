@@ -108,15 +108,15 @@ keycloakConfigCli:
             "defaultClientScopes": [
               "email",
               "groups",
-              "profile",
-              "roles",
-              "web-origins"
+              "profile"
             ],
             "optionalClientScopes": [
               "address",
               "microprofile-jwt",
               "offline_access",
-              "phone"
+              "phone",
+              "roles",
+              "web-origins"
             ],
             "protocolMappers": [
               {
