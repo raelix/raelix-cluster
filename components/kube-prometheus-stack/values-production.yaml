@@ -49,7 +49,7 @@ grafana:
     hosts:
       - grafana.raelix.tk
 
-    path: /grafana
+    path: /
 
   dashboardProviders:
     dashboardproviders.yaml:
