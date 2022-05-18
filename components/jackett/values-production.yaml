@@ -34,3 +34,7 @@ volumeClaimTemplates:
 #   accessMode: "ReadWriteOnce"
 #   size: 2Gi
 #   storageClass: cheap-storage-class
+
+controller:
+  enabled: true
+  type: statefulset
