@@ -10,15 +10,27 @@ ingress:
 
 persistence:
   config:
-    enabled: true
+    enabled: false
     # existingClaim:  # your-claim
     # subPath:  # some-subpath
-    storageClass: nfs-client
-    accessMode: ReadWriteOnce
-    size: 1Gi
-    retain: true
+    # storageClass: nfs-client
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+    # retain: true
 
   torrentblackhole:
     enabled: false
     mountPath: /downloads
 
+volumeClaimTemplates:
+- name: jackett
+  mountPath: /config
+  accessMode: "ReadWriteOnce"
+  storageClass: nfs-client
+  size: 1Gi
+# - name: backup
+#   mountPath: /backup
+#   subPath: theSubPath
+#   accessMode: "ReadWriteOnce"
+#   size: 2Gi
+#   storageClass: cheap-storage-class
