@@ -5,6 +5,7 @@ resources:
   # - app-metallb.yaml
   - app-cert-manager
   - app-sealed-secrets
+  - app-nfs-subdir-external-provisioner
   - app-argo-cd
   - app-duckdns
   - app-reflector
