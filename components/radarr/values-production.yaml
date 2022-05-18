@@ -48,5 +48,5 @@ resources:
     cpu: 1000m
     memory: 1024Mi
   requests:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 300m
+    memory: 1024Mi
