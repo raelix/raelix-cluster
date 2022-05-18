@@ -55,7 +55,7 @@ ingress:
       ingress.kubernetes.io/proxy-body-size: "1024m"
       nginx.ingress.kubernetes.io/proxy-body-size: "1024m"
 
-    ingressClassName: nginx
+    # ingressClassName: nginx
 
     hosts:
     - host: jackett.raelix.tk
