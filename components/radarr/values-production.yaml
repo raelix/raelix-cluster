@@ -30,7 +30,7 @@ volumeClaimTemplates:
 - name: radarr
   mountPath: /config
   accessMode: "ReadWriteOnce"
-  storageClass: nfs-client
+  storageClass: local-path
   size: 5Gi
 # - name: backup
 #   mountPath: /backup
@@ -48,5 +48,5 @@ resources:
     cpu: 1000m
     memory: 1024Mi
   requests:
-    cpu: 300m
-    memory: 1024Mi
+    cpu: 100m
+    memory: 128Mi
