@@ -1,0 +1,22 @@
+image:
+  repository: k8s.gcr.io/sig-storage/nfs-subdir-external-provisioner
+  tag: v4.0.2
+  pullPolicy: IfNotPresent
+
+
+nfs:
+  server: 192.168.1.101
+  path: /volume1/pv
+  mountOptions:
+  volumeName: nfs-subdir-external-provisioner-root
+  reclaimPolicy: Retain
+
+
+storageClass:
+  create: true
+  defaultClass: false
+  name: nfs-client
+  allowVolumeExpansion: true
+  reclaimPolicy: Retain
+  archiveOnDelete: false
+  accessModes: ReadWriteOnce
