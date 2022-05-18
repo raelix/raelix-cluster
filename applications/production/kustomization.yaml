@@ -7,3 +7,4 @@ resources:
   - app-home-assistant
   - app-oauth2-proxy
   - app-radarr
+  - app-jackett

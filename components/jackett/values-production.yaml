@@ -1,0 +1,17 @@
+service:
+  main:
+    ports:
+      http:
+        port: 9117
+
+ingress:
+  main:
+    enabled: false
+
+persistence:
+  config:
+    enabled: false
+
+  torrentblackhole:
+    enabled: false
+    mountPath: /downloads
