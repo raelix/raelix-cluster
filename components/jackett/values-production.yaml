@@ -58,10 +58,10 @@ ingress:
     ingressClassName: nginx
 
     hosts:
-        host: jackett.raelix.tk
-        paths:
-            path: /
-            pathType: Prefix
+    - host: jackett.raelix.tk
+      paths:
+        path: /
+        pathType: Prefix
 
     tls:
     - secretName: jackett-raelix-tk
