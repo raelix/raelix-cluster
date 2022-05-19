@@ -12,7 +12,7 @@ grafana:
 
   grafana.ini:
     server:
-      root_url: https://grafana.raelix.tk:8443
+      root_url: https://grafana.raelix.com
       # serve_from_sub_path: "true"
     auth.basic:
       enabled: false
@@ -24,9 +24,9 @@ grafana:
       name: Keycloak
       allow_sign_up: true
       scopes: profile,email,groups
-      auth_url: https://auth.raelix.tk:8443/auth/realms/master/protocol/openid-connect/auth
-      token_url: https://auth.raelix.tk:8443/auth/realms/master/protocol/openid-connect/token
-      api_url: https://auth.raelix.tk:8443/auth/realms/master/protocol/openid-connect/userinfo
+      auth_url: https://auth.raelix.com/auth/realms/master/protocol/openid-connect/auth
+      token_url: https://auth.raelix.com/auth/realms/master/protocol/openid-connect/token
+      api_url: https://auth.raelix.com/auth/realms/master/protocol/openid-connect/userinfo
       client_id: grafana
       client_secret: grafana-client-secret
       role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
@@ -44,10 +44,10 @@ grafana:
     tls: 
     - secretName: prometheus-grafana-cert
       hosts:
-      - grafana.raelix.tk
+      - grafana.raelix.com
 
     hosts:
-      - grafana.raelix.tk
+      - grafana.raelix.com
 
     path: /
 
