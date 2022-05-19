@@ -1,0 +1,52 @@
+ingress:
+  main:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/auth-url: "https://oauth2-proxy.raelix.com/oauth2/auth"
+      nginx.ingress.kubernetes.io/auth-signin: "https://oauth2-proxy.raelix.com/oauth2/start"
+      nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
+      ingress.kubernetes.io/force-ssl-redirect: "true"
+      ingress.kubernetes.io/proxy-body-size: "1024m"
+      nginx.ingress.kubernetes.io/proxy-body-size: "1024m"
+      # kubernetes.io/ingress.allow-http: "false"
+      # nginx.ingress.kubernetes.io/rewrite-target: /$1
+      # nginx.ingress.kubernetes.io/configuration-snippet: |
+      #   proxy_set_header   Host $host;
+      #   proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+      #   proxy_set_header   X-Forwarded-Host $host;
+      #   proxy_set_header   X-Forwarded-Proto $scheme;
+    enabled: true
+    hosts:
+    - host: sonarr.raelix.com
+      paths:
+      - path: /
+    tls:
+    - secretName: sonarr-raelix-com
+      hosts:
+      - sonarr.raelix.com
+
+volumeClaimTemplates:
+- name: sonarr
+  mountPath: /config
+  accessMode: "ReadWriteOnce"
+  storageClass: local-path
+  size: 5Gi
+# - name: backup
+#   mountPath: /backup
+#   subPath: theSubPath
+#   accessMode: "ReadWriteOnce"
+#   size: 2Gi
+#   storageClass: cheap-storage-class
+
+controller:
+  enabled: true
+  type: statefulset
+
+resources: 
+  limits:
+    cpu: 1000m
+    memory: 1024Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
