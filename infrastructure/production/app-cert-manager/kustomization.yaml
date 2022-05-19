@@ -5,3 +5,6 @@ resources:
 - staging-issuer.yaml
 - prod-issuer.yaml
 # - home-raelix-tk-cert-prod.yaml
+- cloudflare-api-token-secret.yaml
+- prod-cloudflare-issuer.yaml
+- raelix-com-cert-prod.yaml
