@@ -32,7 +32,7 @@ server:
     tls:
       - secretName: raelix-com-cert-wild-card
         hosts:
-          - "argocd.raelix.com"
+          - "*.raelix.com"
 
   config:
     url: "https://argocd.raelix.com"
