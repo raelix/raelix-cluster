@@ -201,6 +201,41 @@ keycloakConfigCli:
                 }
               }
             ]
+          },
+          {
+            "clientId": "rancher",
+            "enabled": true,
+            "clientAuthenticatorType": "client-secret",
+            "secret": "rancher-client-secret",
+            "redirectUris": [
+              "https://rancher.raelix.com/verify-auth"
+            ],
+            "defaultClientScopes": [
+              "email",
+              "groups",
+              "profile",
+              "roles",
+              "web-origins"
+            ],
+            "optionalClientScopes": [
+              "address",
+              "microprofile-jwt",
+              "offline_access",
+              "phone"
+            ],
+            "protocolMappers": [
+              {
+                "name": "groups",
+                "protocol": "openid-connect",
+                "protocolMapper": "oidc-group-membership-mapper",
+                "config": {
+                  "id.token.claim": "true",
+                  "access.token.claim": "true",
+                  "claim.name": "groups",
+                  "userinfo.token.claim": "true"
+                }
+              }
+            ]
           }
         ],
         "users": [
