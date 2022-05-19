@@ -1,0 +1,16 @@
+ingress:
+  enabled: true
+  includeDefaultExtraAnnotations: true
+  extraAnnotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+
+
+  tls:
+    source: secret
+    secretName: raelix-com-cert-wild-card
+
+bootstrapPassword: "LongPasswordShort!"
+
+
+hostname: rancher.raelix.com

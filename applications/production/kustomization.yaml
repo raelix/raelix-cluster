@@ -6,5 +6,6 @@ resources:
   - app-prometheus-json-exporter
   - app-home-assistant
   - app-oauth2-proxy
+  - app-rancher
   - app-radarr
   - app-jackett
