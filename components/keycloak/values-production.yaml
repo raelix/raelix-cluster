@@ -5,7 +5,7 @@ postgresql:
   auth:
     username: bn_keycloak
     database: bitnami_keycloak
-    existingSecret: keycloack-postgres-auth
+    existingSecret: keycloak-postgres-auth
 
 extraEnvVars:
 - name: PROXY_ADDRESS_FORWARDING
@@ -39,7 +39,7 @@ auth:
   adminUser: user
 
   existingSecret:
-    name: keycloack-auth
+    name: keycloak-auth
     # keyMapping:
     #   admin-password: myPasswordKey
     #   management-password: myManagementPasswordKey
