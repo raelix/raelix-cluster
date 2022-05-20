@@ -279,6 +279,32 @@ keycloakConfigCli:
             ]
           },
           {
+            "username": "raelix",
+            "email": "raelix@hotmail.it",
+            "enabled": true,
+            "firstName": "ga",
+            "lastName": "as",
+            "realmRoles": [
+              "admin",
+              "create-realm",
+              "offline_access",
+              "uma_authorization",
+              "default-roles-master"
+            ],
+            "groups": [
+              "grafana-admin",
+              "ArgoCDAdmins",
+              "oauth2-proxy"
+            ],
+            "attributes": [
+              {
+                "locale": [
+                  "it"
+                ]
+              }
+            ]
+          },
+          {
             "username": "viewer",
             "email": "viewer@domain.com",
             "enabled": true,
