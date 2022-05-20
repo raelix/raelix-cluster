@@ -225,6 +225,17 @@ keycloakConfigCli:
                   "claim.name": "groups",
                   "userinfo.token.claim": "true"
                 }
+              },
+              {
+                "name": "Client Audience",
+                "protocol": "openid-connect",
+                "protocolMapper": "oidc-audience-mapper",
+                "consentRequired": false,
+                "config": {
+                    "included.client.audience": "rancher",
+                    "id.token.claim": "false",
+                    "access.token.claim": "true"
+                }
               }
             ]
           }
