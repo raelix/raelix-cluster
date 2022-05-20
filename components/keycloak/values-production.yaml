@@ -243,14 +243,10 @@ keycloakConfigCli:
         "users": [
           {
             "username": "user",
-            "email": "user@domain.com",
+            "email": "user@raelix.com",
             "enabled": true,
-            "firstName": "userFirstName",
-            "lastName": "userLastName",
-            "groups": [
-              "grafana-admin",
-              "ArgoCDAdmins"
-            ],
+            "firstName": "user",
+            "lastName": "user",
             "realmRoles": [
               "admin",
               "default-roles-master"
@@ -264,37 +260,11 @@ keycloakConfigCli:
             ]
           },
           {
-            "username": "admin",
-            "email": "admin@domain.com",
-            "enabled": true,
-            "firstName": "adminFirstName",
-            "lastName": "adminLastName",
-            "groups": [
-              "grafana-admin",
-              "ArgoCDAdmins",
-              "oauth2-proxy"
-            ],
-            "credentials": [
-              {
-                "type": "password",
-                "userLabel": "initial",
-                "value": "admin"
-              }
-            ],
-            "attributes": [
-              {
-                "locale": [
-                  "it"
-                ]
-              }
-            ]
-          },
-          {
             "username": "raelix",
             "email": "raelix@hotmail.it",
             "enabled": true,
-            "firstName": "ga",
-            "lastName": "as",
+            "firstName": "raelix",
+            "lastName": "raelix",
             "realmRoles": [
               "admin",
               "create-realm",
