@@ -287,10 +287,10 @@ keycloakConfigCli:
           },
           {
             "username": "viewer",
-            "email": "viewer@domain.com",
+            "email": "viewer@raelix.com",
             "enabled": true,
-            "firstName": "viewerFirstName",
-            "lastName": "viewerLastName",
+            "firstName": "viewer",
+            "lastName": "viewer",
             "groups": [
               "grafana-dev",
               "ArgoCDViewers"
