@@ -4,9 +4,8 @@ postgresql:
   enabled: true
   auth:
     username: bn_keycloak
-    password: "bn_keycloak_password"
     database: bitnami_keycloak
-
+    existingSecret: keycloack-postgres-auth
 
 extraEnvVars:
 - name: PROXY_ADDRESS_FORWARDING
@@ -37,22 +36,14 @@ ingress:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 
 auth:
-  adminPassword: admin
-  managementPassword: management
+  adminUser: user
 
-      # "defaultClientScopes": [
-      #   "email",
-      #   "groups",
-      #   "profile",
-      #   "roles",
-      #   "web-origins"
-      # ],
-      # "optionalClientScopes": [
-      #   "address",
-      #   "microprofile-jwt",
-      #   "offline_access",
-      #   "phone"
-      # ]
+  existingSecret:
+    name: keycloack-auth
+    # keyMapping:
+    #   admin-password: myPasswordKey
+    #   management-password: myManagementPasswordKey
+
 
 keycloakConfigCli:
   enabled: true
