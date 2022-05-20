@@ -10,6 +10,6 @@ resources:
   - app-jackett-synology
   - app-oauth2-proxy
   - app-rancher
-  - app-radarr
-  - app-sonarr
-  - app-jackett
+  # - app-radarr
+  # - app-sonarr
+  # - app-jackett

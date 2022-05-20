@@ -41,3 +41,6 @@ kubeseal --controller-name sealed-secrets-controller --controller-namespace kube
 [ X ] - Add sealed secrets
 [ ] - Create a common launcher
 [ ] - use one entrypoint even for home assistant?
+[ ] - use the wild-card
+[ ] - create the secret for keycloak to avoid errors during the cli apply
+[ ] - Add mapper for rancher
