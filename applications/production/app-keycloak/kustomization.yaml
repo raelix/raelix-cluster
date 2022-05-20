@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - keycloak-ns.yaml
   - keycloak-auth-sealed.yaml
-  - keycloak-postges-auth-sealed.yaml
+  - keycloak-postgres-auth-sealed.yaml
   - app-keycloak.yaml
