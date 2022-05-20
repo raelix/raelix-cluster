@@ -6,6 +6,8 @@ resources:
   - app-prometheus-json-exporter
   - app-home-assistant
   - app-sonarr-synology
+  - app-radarr-synology
+  - app-jackett-synology
   - app-oauth2-proxy
   - app-rancher
   - app-radarr

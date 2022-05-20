@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jacket
+  namespace: default
+spec:
+  ports:
+    - name: https
+      port: 9117
+      targetPort: 9117
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: jacket
+  namespace: default
+subsets:
+- addresses:
+  - ip: "192.168.1.101"
+  ports:
+  - name: https
+    port: 9117
