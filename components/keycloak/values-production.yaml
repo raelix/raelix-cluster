@@ -5,7 +5,7 @@ postgresql:
   auth:
     username: bn_keycloak
     database: bitnami_keycloak
-    existingSecret: keycloak-postgres-auth
+    existingSecret: keycloak-postgresql-auth
 
 extraEnvVars:
 - name: PROXY_ADDRESS_FORWARDING
