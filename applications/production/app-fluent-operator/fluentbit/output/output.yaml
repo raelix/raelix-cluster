@@ -39,27 +39,27 @@ spec:
     - pod=$kubernetes['pod_name']
     - namespace=$kubernetes['namespace_name']
     - source=fluentbit
-# ---
-# apiVersion: fluentbit.fluent.io/v1alpha2
-# kind: ClusterOutput
-# metadata:
-#   name: ingress-nginx-controller-stdout
-#   labels:
-#     logging: "true"
-# spec:
-#   match: ingress-nginx-controller.*
-#   stdout:
-#     format: json
-# ---
-# apiVersion: fluentbit.fluent.io/v1alpha2
-# kind: ClusterOutput
-# metadata:
-#   name: kube-stdout
-#   labels:
-#     logging: "true"
-# spec:
-#   match: kube.*
-#   stdout:
-#     format: json
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterOutput
+metadata:
+  name: ingress-nginx-controller-stdout
+  labels:
+    logging: "true"
+spec:
+  match: ingress-nginx-controller.*
+  stdout:
+    format: json
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterOutput
+metadata:
+  name: kube-stdout
+  labels:
+    logging: "true"
+spec:
+  match: kube.*
+  stdout:
+    format: json
 
 
