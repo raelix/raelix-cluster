@@ -8,13 +8,15 @@ spec:
   match: kube.*
   filters:
   - kubernetes:
-    #  kubeURL: https://kubernetes.default.svc:443
-    #  kubeCAFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-    #  kubeTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      # kubeURL: https://kubernetes.default.svc:443
+      # kubeCAFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      # kubeTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
       mergeLog: true
       keepLog: false
       labels: true
       annotations: false
+      bufferSize: "128k"
+      mergeLogKey: log_processed
   # - nest:
   #     operation: lift
   #     nestedUnder: kubernetes
@@ -25,7 +27,7 @@ spec:
   #     - remove: kubernetes_pod_id
   #     - remove: kubernetes_host
   #     - remove: kubernetes_container_hash
-  - rewriteTag:
-      rules:
-      - "$kubernetes['pod_name'] /(?i)(^ingress-nginx-controller*)/ ingress-nginx-controller.$TAG false"
+  # - rewriteTag:
+  #     rules:
+  #     - "$kubernetes['pod_name'] /(?i)(^ingress-nginx-controller*)/ ingress-nginx-controller.$TAG false"
 
