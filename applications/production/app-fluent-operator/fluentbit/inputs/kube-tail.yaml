@@ -1,0 +1,14 @@
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterInput
+metadata:
+  name: kube-tail
+  labels:
+    logging: "true"
+spec:
+  tail:
+    tag: kube.*
+    path: /var/log/containers/*.log
+    parser: docker
+    refreshIntervalSeconds: 9
+    memBufLimit: 500MB
+    skipLongLines: true

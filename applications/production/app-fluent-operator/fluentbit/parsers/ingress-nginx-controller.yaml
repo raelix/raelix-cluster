@@ -1,0 +1,16 @@
+
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterParser
+metadata:
+  name: ingress-nginx-controller
+  namespace: fluent
+  labels:
+    logging: "true"
+spec:
+  regex:
+    timeKey: "time"
+    timeFormat: "%d/%b/%Y:%H:%M:%S %z" #27/May/2022:18:50:28 +0000
+    regex: | 
+        ^(?<remote_addr>[^ ]*) - (?<remote_user>[^ ]*) \[(?<time>[^\]]*)\] "(?<method>\S+)(?: +(?<path>[^\"]*?)(?: +\S*)?)?" (?<status>[^ ]*) (?<body_bytes_sent>[^ ]*) "(?<http_referer>[^\"]*)" "(?<http_user_agent>[^\"]*)" (?<request_length>[^ ]*) (?<request_time>[^ ]*) \[(?<proxy_upstream_name>[^ ]*)\] (\[(?<proxy_alternative_upstream_name>[^ ]*)\] )?(?<upstream_addr>[^ ]*) (?<upstream_response_length>[^ ]*) (?<upstream_response_time>[^ ]*) (?<upstream_status>[^ ]*) (?<req_id>[^ ]*)$
+
+

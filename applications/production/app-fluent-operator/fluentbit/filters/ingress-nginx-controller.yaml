@@ -1,0 +1,15 @@
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterFilter
+metadata:
+  name: ingress-nginx-controller-filter
+  labels:
+    logging: "true"
+spec:
+  match: ingress-nginx-controller.*
+  filters:
+  - parser:
+      keyName: log
+      parser: ingress-nginx-controller
+      # preserveKey: true 
+      reserveData: true 
+
