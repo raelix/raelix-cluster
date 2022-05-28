@@ -3,7 +3,6 @@ apiVersion: fluentbit.fluent.io/v1alpha2
 kind: ClusterParser
 metadata:
   name: docker
-  namespace: fluent
   labels:
     logging: "true"
 spec:
