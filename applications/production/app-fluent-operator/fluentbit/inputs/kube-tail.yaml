@@ -7,8 +7,8 @@ metadata:
 spec:
   tail:
     tag: kube.*
-    # path: /var/log/containers/*.log
-    path: /var/log/containers/ingress-nginx-controller*.log
+    path: /var/log/containers/*.log
+    # path: /var/log/containers/ingress-nginx-controller*.log
     parser: docker
     refreshIntervalSeconds: 10
     memBufLimit: 50MB

@@ -3,6 +3,6 @@ kind: Kustomization
 
 bases:
 - ../../../components/fluent-operator
-# resources:
-# - fluentbit/
+resources:
+- fluentbit/
 

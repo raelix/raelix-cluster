@@ -16,18 +16,35 @@ spec:
       labels: true
       annotations: false
       bufferSize: "128k"
-      mergeLogKey: log_processed
-  # - nest:
-  #     operation: lift
-  #     nestedUnder: kubernetes
-  #     addPrefix: kubernetes_
-  # - modify:
-  #     rules:
-  #     - remove: stream
-  #     - remove: kubernetes_pod_id
-  #     - remove: kubernetes_host
-  #     - remove: kubernetes_container_hash
-  # - rewriteTag:
-  #     rules:
-  #     - "$kubernetes['pod_name'] /(?i)(^ingress-nginx-controller*)/ ingress-nginx-controller.$TAG false"
+  - nest:
+      operation: lift
+      nestedUnder: kubernetes
+  - nest:
+      operation: lift
+      nestedUnder: labels
+      addPrefix: labels_
+  - modify:
+      rules:
+      - remove: stream
+      - remove: pod_id
+      - remove: host
+      - remove: container_hash
+      - rename: 
+          pod_name: pod
+          namespace_name: namespace
+          container_name: container
+          "labels_app.kubernetes.io/name": "deployment" 
+          "labels_app.kubernetes.io/instance": "instance"
+  - nest:
+      operation: nest
+      wildcard:
+      - labels_*
+      nestUnder: labels
+      removePrefix: labels_
+  - modify:
+      rules:
+      - remove: labels
+  - rewriteTag:
+      rules:
+      - "$pod /(?i)(^ingress-nginx-controller*)/ ingress-nginx-controller.$TAG false"
 
