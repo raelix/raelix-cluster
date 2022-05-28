@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: production
+    chart: loki
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 2.11.1
+    helm:
+      values: |
+        persistence:
+          enabled: true
+          size: 30Gi
+        config:
+          compactor:
+            retention_enabled: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: logging
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
