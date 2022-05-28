@@ -71,6 +71,14 @@ grafana:
         editable: true
         options:
           path: /tmp/dashboards/opensea-dashboard
+      - name: 'logging-dashboard'
+        orgId: 1
+        folder: 'Home Assistant Dashboard'
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /tmp/dashboards/logging-dashboard
 
   datasources:
     datasources.yaml:
