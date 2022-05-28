@@ -87,7 +87,6 @@ grafana:
         uid: loki
         url: http://loki.logging.svc:3100
         access: proxy
-        isDefault: true
 
   sidecar:
     dashboards:
