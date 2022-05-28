@@ -82,6 +82,12 @@ grafana:
         url: http://prometheus-kube-prometheus-prometheus:9090
         access: proxy
         isDefault: true
+      - name: Loki
+        type: loki
+        uid: loki
+        url: http://loki.logging.svc:3100
+        access: proxy
+        isDefault: true
 
   sidecar:
     dashboards:
