@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - app-keycloak
   - app-loki
+  - app-fluent-operator
   - app-kube-prometheus-stack
   - app-prometheus-json-exporter
   - app-home-assistant
