@@ -50,16 +50,16 @@ spec:
   match: ingress-nginx-controller.*
   stdout:
     format: json
----
-apiVersion: fluentbit.fluent.io/v1alpha2
-kind: ClusterOutput
-metadata:
-  name: kube-stdout
-  labels:
-    logging: "true"
-spec:
-  match: kube.*
-  stdout:
-    format: json
+# ---
+# apiVersion: fluentbit.fluent.io/v1alpha2
+# kind: ClusterOutput
+# metadata:
+#   name: kube-stdout
+#   labels:
+#     logging: "true"
+# spec:
+#   match: kube.*
+#   stdout:
+#     format: json
 
 
