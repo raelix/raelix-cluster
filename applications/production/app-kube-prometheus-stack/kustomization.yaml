@@ -21,4 +21,12 @@ configMapGenerator:
       k8s-sidecar-target-directory: "/tmp/dashboards/opensea-dashboard"
   files:
     - dashboards/opensea-dashboard.json
-
+- name: logging-dashboard
+  namespace: monitoring
+  options:
+    labels:
+      grafana_dashboard: "1"
+    annotations:
+      k8s-sidecar-target-directory: "/tmp/dashboards/logging-dashboard"
+  files:
+    - dashboards/logging-dashboard.json
