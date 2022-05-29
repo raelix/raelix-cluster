@@ -12,7 +12,7 @@ spec:
     labelKeys:
       - $pod
         #- $instance
-      - $deployment
+        #- $deployment
       - $namespace
     labels:
     - source=fluentbit
