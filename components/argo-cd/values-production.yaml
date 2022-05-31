@@ -1,4 +1,5 @@
 server:
+  logFormat: json
   extraArgs:
    - --insecure
   #  - --rootpath
@@ -68,7 +69,8 @@ server:
 # redis-ha:
 #   enabled: true
 
-# controller:
+controller:
+  logFormat: json
 #   enableStatefulSet: true
 
 # server:
@@ -76,7 +78,8 @@ server:
 #     enabled: true
 #     minReplicas: 2
 
-# repoServer:
+repoServer:
+  logFormat: json
 #   autoscaling:
 #     enabled: true
 #     minReplicas: 2
