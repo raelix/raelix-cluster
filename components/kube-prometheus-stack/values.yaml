@@ -2569,7 +2569,7 @@ prometheus:
         'match[]':
           - '{job="home-assistant"}'
       static_configs:
-      - targets: ['192.168.1.100:9090']
+      - targets: ['192.168.1.10:9090']
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node
