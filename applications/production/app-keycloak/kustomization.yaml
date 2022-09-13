@@ -4,5 +4,5 @@ resources:
   - keycloak-ns.yaml
   - keycloak-auth-sealed.yaml
   - keycloak-postgres-auth-sealed.yaml
-  - app-keycloak.yaml
   - servicemonitor-keycloak.yaml
+  - app-keycloak.yaml
