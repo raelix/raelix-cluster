@@ -85,6 +85,12 @@ keycloakConfigCli:
           },
           {
             "name": "ArgoCDViewers"
+          },
+          {
+            "name": "admin"
+          },
+          {
+            "name": "movie"
           }
         ],
         "clients": [
@@ -286,20 +292,19 @@ keycloakConfigCli:
             ]
           },
           {
-            "username": "viewer",
-            "email": "viewer@raelix.com",
+            "username": "film",
+            "email": "film@raelix.com",
             "enabled": true,
-            "firstName": "viewer",
-            "lastName": "viewer",
+            "firstName": "film",
+            "lastName": "film",
             "groups": [
-              "grafana-dev",
-              "ArgoCDViewers"
+              "movie"
             ],
             "credentials": [
               {
                 "type": "password",
                 "userLabel": "initial",
-                "value": "viewer"
+                "value": "film"
               }
             ],
             "attributes": [
@@ -312,3 +317,32 @@ keycloakConfigCli:
           }
         ]
       }
+
+
+
+
+# {
+#   "username": "viewer",
+#   "email": "viewer@raelix.com",
+#   "enabled": true,
+#   "firstName": "viewer",
+#   "lastName": "viewer",
+#   "groups": [
+#     "grafana-dev",
+#     "ArgoCDViewers"
+#   ],
+#   "credentials": [
+#     {
+#       "type": "password",
+#       "userLabel": "initial",
+#       "value": "viewer"
+#     }
+#   ],
+#   "attributes": [
+#     {
+#       "locale": [
+#         "it"
+#       ]
+#     }
+#   ]
+# }
