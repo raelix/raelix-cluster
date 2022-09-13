@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: streamingcommunity
+  namespace: default
+spec:
+  project: production
+  source:
+    repoURL: https://github.com/raelix/streamingcommunity.git
+    targetRevision: HEAD
+    path: /
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
