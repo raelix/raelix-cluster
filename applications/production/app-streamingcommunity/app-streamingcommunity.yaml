@@ -6,7 +6,7 @@ metadata:
 spec:
   project: production
   source:
-    repoURL: https://github.com/raelix/streamingcommunity.git
+    repoURL: https://github.com/raelix/streamingcommunity
     targetRevision: HEAD
     path: resources
   destination:
