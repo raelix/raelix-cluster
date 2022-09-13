@@ -24,6 +24,8 @@ extraEnvVars:
   value: "true"
 - name: KEYCLOAK_ENABLE_STATISTICS
   value: "true"
+- name: KEYCLOAK_STATISTICS
+  value: all
 
 service:
   type: ClusterIP
