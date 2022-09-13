@@ -298,6 +298,7 @@ keycloakConfigCli:
             "enabled": true,
             "firstName": "film",
             "lastName": "film",
+            "emailVerified": true,
             "groups": [
               "movie"
             ],
