@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/raelix/streamingcommunity.git
     targetRevision: HEAD
-    path: /
+    path: resources
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
