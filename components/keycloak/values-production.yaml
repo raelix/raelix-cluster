@@ -281,7 +281,8 @@ keycloakConfigCli:
             "groups": [
               "grafana-admin",
               "ArgoCDAdmins",
-              "oauth2-proxy"
+              "oauth2-proxy",
+              "admin"
             ],
             "attributes": [
               {

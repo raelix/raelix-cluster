@@ -4,10 +4,6 @@ service:
       http:
         port: 9117
 
-ingress:
-  main:
-    enabled: false
-
 persistence:
   config:
     enabled: false
@@ -39,8 +35,6 @@ controller:
   enabled: true
   type: statefulset
 
-
-
 ingress:
   main:
     enabled: true
@@ -48,7 +42,7 @@ ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       kubernetes.io/ingress.class: nginx
-      nginx.ingress.kubernetes.io/auth-url: "https://oauth2-proxy.raelix.com/oauth2/auth"
+      nginx.ingress.kubernetes.io/auth-url: "https://oauth2-proxy.raelix.com/oauth2/auth?allowed_groups=admin"
       nginx.ingress.kubernetes.io/auth-signin: "https://oauth2-proxy.raelix.com/oauth2/start"
       nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
       ingress.kubernetes.io/force-ssl-redirect: "true"
