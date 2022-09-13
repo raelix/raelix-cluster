@@ -1,5 +1,17 @@
 proxyAddressForwarding: true
 
+metrics:
+  enabled: true
+  service:
+    ports:
+      http: 9990
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "{{ .Values.metrics.service.ports.http }}"
+  
+  serviceMonitor:
+    enabled: true
+
 postgresql:
   enabled: true
   auth:
@@ -9,6 +21,8 @@ postgresql:
 
 extraEnvVars:
 - name: PROXY_ADDRESS_FORWARDING
+  value: "true"
+- name: KEYCLOAK_ENABLE_STATISTICS
   value: "true"
 
 service:
