@@ -27,7 +27,10 @@ spec:
             kind: DaemonSet
             hostNetwork: true
             image:
-              repository: docker.io/raelix/nginx-ingress:latest
+              repository: docker.io/raelix/nginx-ingress
+              tag: latest
+              digest: null
+              digestChroot: null
             service:
               type: ""
             metrics:
