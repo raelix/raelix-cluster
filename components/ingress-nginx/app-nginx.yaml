@@ -14,9 +14,25 @@ spec:
     targetRevision: 4.1.0
     helm:
       values: |
+          config:
+            allow-snippet-annotations: "true"
+            client-body-buffer-size: 256000k
+            compute-full-forwarded-for: "true"
+            error-log-level: info
+            log-format-escape-json: "true"
+            log-format-upstream: '{"network":{"forwarded_ip":"$http_x_forwarded_for"},"user":{"name":"$remote_user"},"user_agent":{"original":"$http_user_agent"},"http":{"version":"$server_protocol","request":{"body":{"bytes":$body_bytes_sent},"bytes":$request_length,"method":"$request_method","referrer":"$http_referer"},"response":{"body":{"bytes":$body_bytes_sent},"bytes":$bytes_sent,"status_code":"$status","time":$request_time}},"url":{"domain":"$host","path":"$uri","query":"$args","original":"$request_uri","request_body":"$request_body","response_body":"no"}}'
+            proxy-buffer-size: 256k
+            use-forwarded-headers: "true"
           controller: 
             kind: DaemonSet
             hostNetwork: true
+            image:
+              chroot: false
+              registry: docker.io
+              image: raelix/nginx-ingress
+              tag: "latest"
+              digest: ""
+              digestChroot: ""
             service:
               type: ""
             metrics:
