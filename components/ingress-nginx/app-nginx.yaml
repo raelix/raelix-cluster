@@ -28,7 +28,7 @@ spec:
             hostNetwork: true
             image:
               repository: docker.io/raelix/nginx-controller
-              tag: 1.2.0
+              tag: v1.2.0
               digest: null
               digestChroot: null
             service:
