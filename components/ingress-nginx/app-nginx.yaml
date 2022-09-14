@@ -15,6 +15,7 @@ spec:
     helm:
       values: |
           config:
+            main-snippet: load_module /etc/nginx/modules/ngx_http_echo_module.so;
             allow-snippet-annotations: "true"
             client-body-buffer-size: 256000k
             compute-full-forwarded-for: "true"
