@@ -13,6 +13,7 @@ resources:
   - app-oauth2-proxy
   - app-rancher
   - app-streamingcommunity
+  - app-paperless
   # - app-radarr
   # - app-sonarr
   # - app-jackett
