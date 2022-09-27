@@ -6,6 +6,7 @@ resources:
   - app-cert-manager
   - app-sealed-secrets
   - app-nfs-subdir-external-provisioner
+  - app-rclone
   - app-argo-cd
   - app-duckdns
   - app-reflector
