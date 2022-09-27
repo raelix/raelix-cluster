@@ -107,12 +107,12 @@ persistence:
   export:
     enabled: true
     mountPath: /usr/src/paperless/export
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 10G
     # emptyDir:
     #   enabled: true
 
-    type: emptyDir
+    # type: emptyDir
 
 # -- Enable and configure postgresql database subchart under this key.
 #    For more options see [postgresql chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/postgresql)
@@ -135,18 +135,18 @@ redis:
   auth:
     enabled: false
 
-additionalContainers:
-  backup:
-    command:
-    - sh
-    - -c
-    - while true; do sleep 10000; done
-    image: busybox:latest
-    name: backup
-    imagePullPolicy: IfNotPresent
-    volumeMounts:
-      - name: export
-        mountPath: /export
+# additionalContainers:
+#   backup:
+#     command:
+#     - sh
+#     - -c
+#     - while true; do sleep 10000; done
+#     image: busybox:latest
+#     name: backup
+#     imagePullPolicy: IfNotPresent
+#     volumeMounts:
+#       - name: export
+#         mountPath: /export
 
 
 
