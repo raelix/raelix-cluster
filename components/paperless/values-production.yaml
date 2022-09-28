@@ -106,6 +106,7 @@ persistence:
   # @default -- See values.yaml
   export:
     enabled: true
+    existingClaim: gdrive-volume
     mountPath: /usr/src/paperless/export
     accessMode: ReadWriteMany
     size: 10G
